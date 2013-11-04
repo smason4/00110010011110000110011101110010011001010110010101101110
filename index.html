@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Login Screen</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.mobile.min.js"></script>
+
+        <link href="css/jquery.mobile.structure.min.css" rel="stylesheet">
+        <link href="css/jquery.mobile.theme.min.css" rel="stylesheet">
+        <link href="css/custom.css" rel="stylesheet">
+
+        <script src="js/jquery.cookie.js"></script>
+        <script src="js/custom.js"></script>
+    </head>
+
+    <script>
+		function authenticate() {
+			location.href = 'AvlFlightList.html';
+		}
+    </script>
+
+    <body>
+        <div data-role="page">
+            <div data-role="header" data-position="fixed">
+                <img src="images/Banner.png" width="100%">
+            </div>
+
+            <div class="bgImage">
+                <div data-role="content" class="login">
+                    <input type="text" id="user" placeholder="Employee ID">
+                    <input type="password" id="password" placeholder="Jetnet Password">
+                    <br>
+                    <a data-role="button" data-theme="b" onclick="authenticate()">LOGIN</a>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
