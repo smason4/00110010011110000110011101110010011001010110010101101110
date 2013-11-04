@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Return Flight</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.mobile.min.js"></script>
+
+        <link href="css/jquery.mobile.structure.min.css" rel="stylesheet">
+        <link href="css/jquery.mobile.theme.min.css" rel="stylesheet">
+        <link href="css/custom.css" rel="stylesheet">
+
+        <script src="js/jquery.cookie.js"></script>
+        <script src="js/custom.js"></script>
+
+        <script>
+			$(document).ready(function() {
+				var header = $('[data-role=header]').outerHeight();
+				var panel = $('.ui-panel').height();
+				var panelheight = panel - header;
+				// make the pull out menu apepar below the header
+				$('.ui-panel').css({
+					'top' : header,
+					'min-height' : panelheight
+				});
+
+				$('#today, #tomorrow, #bydate').children().children().css('font-size', '12px');
+				// List each flight from array
+				var fltDetails;
+				$.each(flights[0].fltDepart, function(i, val) {
+					fltDetails = '';
+					//fltDetails += '<span class="fltDate">' + new Date(flights[0].fltDepart[i].depDate).getDate() + '</span>';
+                    fltDetails += '<span class="fltDate">10</span>';
+					fltDetails += '<span class="fltStation">' + flights[0].fltDepart[i].depStation + '</span>';
+					fltDetails += '<span class="fltTime">' + flights[0].fltDepart[i].depTime + '</span>';
+
+					fltDetails += '<br>';
+
+					fltDetails += '<Div class="ui-grid-c">';
+
+					fltDetails += '<span class="ui-block-a">';
+					fltDetails += '<button type="button" class="fltButtonSelect">SELECT</button>';
+					fltDetails += '</span>';
+
+					fltDetails += '<span class="ui-block-b fltGroup">';
+					fltDetails += '<span><img src="icons/FirstClass2.png"></span>';
+					fltDetails += '<span class="fltCnt">' + flights[0].fltDepart[i].firstClass + '</span>';
+					fltDetails += '<span class="fltLabel">First Class</span>';
+					fltDetails += '</span>';
+					// end First Class
+
+					fltDetails += '<span class="ui-block-c fltGroup">';
+					fltDetails += '<span><img src="icons/CoachClass2.png"></span>';
+					fltDetails += '<span class="fltCnt2">' + flights[0].fltDepart[i].coachClass + '</span>';
+					fltDetails += '<span class="fltLabel2">Coach Class</span>';
+					fltDetails += '</span>';
+					// end Coach Class
+
+					fltDetails += '<span class="ui-block-d fltGroup">';
+					fltDetails += '<span><img src="icons/Standby2.png"></span>';
+					fltDetails += '<span class="fltCnt">' + flights[0].fltDepart[i].standBy + '</span>';
+					fltDetails += '<span class="fltLabel">Standby</span>';
+					fltDetails += '</span>';
+					// end Standby
+
+					fltDetails += '</div>';
+
+					$("#flightList").append('<li class="flightLI">' + fltDetails + '</li>');
+
+				});
+
+			});
+
+        </script>
+
+    </head>
+
+    <body>
+
+        <div data-role="page" data-iscroll="disabled">
+            <div data-role="header" data-position="fixed" data-theme="b"  >
+                <a data-role="button" data-theme="a" href="AvlFlightList.html" class="ui-btn-left"> Back </a>
+                <h1>RETURN FLIGHTS</h1>
+            </div>
+
+            <div data-role="panel" id="navpanel" data-theme="a" data-display="overlay" data-position="left">
+                <div data-corners="false" data-role="controlgroup">
+                    <a href="#" data-role="button" data-theme="a" > <img src="icons/253-person.png" align="absmiddle"> Nathan Charles </a>
+                    <a href="#navpanel" data-role="button" data-theme="a" > <img src="icons/83-calendar.png" align="absmiddle"> Available Flights </a>
+                    <a href="index.html" data-role="button" data-theme="a" > <img src="icons/19-gear.png" align="absmiddle"> Sign Out </a>
+                </div>
+            </div>
+
+            <div data-role="content" id="content">
+                <div id="flightListDiv">
+                    <ul id="flightList" data-role="listview" data-divider-theme="b" data-inset="true" ></ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
